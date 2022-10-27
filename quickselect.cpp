@@ -1,7 +1,6 @@
 /*******************************************************************************
  * Name          : quickelect.cpp
  * Author        : Lilli Nappi
- * Pledge        : I pledge my honor that I have abided by the Stevens Honors System.
  * Date          : 10/26/22
  * Description   : Implements the quickselect algorithm.
  ******************************************************************************/
@@ -113,7 +112,7 @@ int main(int argc, char *argv[]) {
     }
 
 
-    // TODO - call the quick_select function and display the result
+    // Call the quick_select function and display the result
     int *array;
     array = &values[0];
     cout << "Smallest element " << argv[1] << ": " << quick_select(array, num_values, k) << endl;
