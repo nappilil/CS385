@@ -3,7 +3,6 @@
  * Author      : Lilli Nappi
  * Date        : 10/8/22
  * Description : Lists the number of ways to climb n stairs.
- * Pledge      : I pledge my honor that I have abided by the Stevens Honors System.
  ******************************************************************************/
 #include <iostream>
 #include <vector>
@@ -14,7 +13,7 @@
 using namespace std;
 
 vector< vector<int> > get_ways(int num_stairs) {
-    // TODO: Return a vector of vectors of ints representing
+    // Return a vector of vectors of ints representing
     // the different combinations of ways to climb num_stairs
     // stairs, moving up either 1, 2, or 3 stairs at a time.
 
@@ -42,7 +41,7 @@ vector< vector<int> > get_ways(int num_stairs) {
 }
 
 void display_ways(const vector< vector<int> > &ways) {
-    // TODO: Display the ways to climb stairs by iterating over
+    // Display the ways to climb stairs by iterating over
     // the vector of vectors and printing each combination.
 
     for (unsigned int i = 0; i < ways.size(); i++) {
