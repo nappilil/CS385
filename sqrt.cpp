@@ -1,10 +1,7 @@
 /*******************************************************************************
- * Filename: helloworld.cpp
+ * Filename: sqrt.cpp
  * Author  : Lilli Nappi
- * Version : 1.0
- * Date    : 9/6/22
  * Description: Computes Square Root of a Double using Newton's Method.
- * Pledge  : I pledge my honor that I have abided by the Stevens Honors System.
  ******************************************************************************/
 #include <limits>
 #include <iostream>
@@ -16,15 +13,17 @@ double sqrt(double num, double epsilon) {
 	double last_guess = num;
 	// last guess is number you want to compute square root of initially
 	double next_guess;
-
+	
+	// Return numeric_limits<double>::quiet_NaN(), if the num < 0
 	if (num < 0) {
 		return numeric_limits<double>::quiet_NaN();
 	}
 
+	// Return num, if num is 0 or 1
 	if (num == 0 || num == 1) {
 		return num;
 	}
-
+	// Repeat next_guess = (last_guess + num/last_guess) / 2 until abs(last_guess - next_guess) <= epsilon
 	while (true) {
 		next_guess = (last_guess + num / last_guess) / 2;
 		if ((abs(last_guess - next_guess)) <= epsilon)
