@@ -2,6 +2,9 @@
 .global _start
 .extern printf
 
+// Lilli Nappi
+// Assembly implementation of Binary Search 
+
 _start:
 	.global binarysearch
 
