@@ -2,6 +2,9 @@
 .global _start
 .extern printf
 
+// Lilli Nappi
+// Computes Taylor Series for e^x = 1 + 1/1!(x) + 1/2!(x)^2 + 1/3!(x)^3 + ...
+
 _start:
 
     adr x0, string  // load address of string
