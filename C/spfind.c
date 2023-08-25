@@ -7,7 +7,7 @@
 
 /*
 Lilli Nappi
-I pledge my honor that I have abided by the Stevens Honors System.  
+Use pipes to sort the output of a binary pfind (pfind finds the path given a directory)
 */
 
 /* Connect standard output of pfind to standard input of sort */
