@@ -1,0 +1,343 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <errno.h>
+#include <string.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <signal.h>
+#include <stdbool.h>
+#include <sys/select.h>
+#include <setjmp.h>
+#include <dirent.h>
+#include <sys/stat.h>
+
+
+/** 
+Lilli Nappi
+Create custom minishell terminal
+Capture signal to ignore CTL-Z command 
+*/
+
+#define BLUE "\x1b[34;1m"
+#define DEFAULT "\x1b[0m"
+#define GREEN "\x1b[32m"
+
+volatile sig_atomic_t interrupted = false;
+
+void signal_handler(int signal) {
+  interrupted = true; // handle SIGINT
+  printf("\n");
+}
+
+/* 
+  EXTRA CREDIT 
+  find <directory> <filename>
+  modified navigate from hw3 
+  */
+void navigate(const char* directory, const char* filename) {
+  DIR* dp; /* directory pointer */
+  struct dirent* dirp; /* dirent struct */
+
+  dp = opendir(directory); // open directory
+  /* print out to standard error */
+  if (dp == NULL) {
+    if (errno == ENOENT) {
+      fprintf(stderr, "Error: Directory doesn't exist.\n");
+    } else {
+      fprintf(stderr, "Error: %s.\n", strerror(errno));
+    }
+    closedir(dp);
+    return;
+  }
+  
+  /* Use readdir in a loop until it returns NULL */
+  while ((dirp = readdir(dp)) != NULL) {
+  
+    struct stat fileinfo; /* stat struct to check file permissions */
+
+    /* maximum path length in LINUX 4096 */
+    char path[4096];
+    snprintf(path, sizeof(path), "%s/%s", directory, dirp->d_name); // stored into path
+
+    if (stat(path, &fileinfo) != 0) {
+      fprintf(stderr, "Error: %s.\n", strerror(errno));
+      continue;
+    }
+
+    /* Check if parent directory or current working directory */
+    if (S_ISDIR(fileinfo.st_mode) == 1) {
+      if (strcmp(dirp->d_name, "..") == 0 || strcmp(dirp->d_name, ".") == 0) {
+        continue;
+      }    
+      navigate(path, filename); // recursively navigate tree
+    } 
+    /* If not a directory check file */
+    if ((S_ISREG(fileinfo.st_mode)==1) && strcmp(dirp->d_name, filename) == 0) {
+      printf("%s\n", path); // file found in current directory
+    }
+  }
+  closedir(dp); // close directory
+}
+
+int main() {
+  /* declare a struct sigaction */
+  struct sigaction action;
+  /* set the handler */
+  action.sa_handler = signal_handler;
+  sigemptyset(&action.sa_mask);
+  /* set the flags */
+  action.sa_flags = 0;
+  /* Insall the signal handler */
+  if (sigaction(SIGINT, &action, NULL) == -1) {
+      fprintf(stderr, "Error: Cannot register signal handler. %s.\n", strerror(errno));
+  }
+
+  while (1) {
+    /* set to false before next iteration */
+    interrupted = false;
+   
+    // char array to store the pathname
+    char* cwd;
+    if ((cwd=getcwd(NULL,0)) == NULL) {
+      fprintf(stderr, "Error: Cannot get current working directory. %s.\n", strerror(errno));
+    }
+    printf("%s%s%s%s%s%s", BLUE, "[", cwd, "]", DEFAULT, "> ");
+
+    /** Recieve input from stdin */
+    char *user_input = (char*)(malloc(4096));
+    if (user_input == NULL) {
+      /* Error handling */
+      fprintf(stderr, "Error: malloc() failed. %s.\n", strerror(errno));
+    }
+    memset(user_input, 0, 4096); // double check user_input is not empty
+    fgets(user_input, 4096, stdin); // get user input
+    
+    /** Error Handling */
+    if (user_input == NULL && interrupted == false) {
+      fprintf(stderr, "Error: Failed to read from stdin. %s.\n", strerror(errno));
+    }
+
+    /* Insall the signal handler */
+    if (sigaction(SIGINT, &action, NULL) == -1) {
+      fprintf(stderr, "Error: Cannot register signal handler. %s.\n", strerror(errno));
+    }
+       
+    /** CD
+    change working directory */    
+    int invalid_args = 0;
+    if (user_input[0] == 'c' && user_input[1] == 'd' && (user_input[2] == ' ' || user_input[2] == '\n') && (interrupted != true)) {
+      for (int i=3; i<strlen(user_input); i++) {
+        if(user_input[i]==' ') {
+          /** Check for too many arguments */
+          fprintf(stderr, "Error: Too many arguments to cd.\n");
+          invalid_args = 1;
+          break;
+        }
+      }
+      /* skip if too many arguments */
+      if (invalid_args == 1) {
+        free(cwd);
+        free(user_input);
+        continue; // skip iteration
+      }
+      /** cd arguments */ 
+      uid_t uid = getuid(); // user id
+      struct passwd* pwd;
+      pwd = getpwuid(uid); // password file for user
+      /** Error handling */
+      if (pwd == NULL) {
+        fprintf(stderr, "Error: Cannot get passwd entry. %s.\n", strerror(errno));
+      } 
+      else if ((invalid_args == 0) && (user_input[3] == '~' || user_input[2] == '\n'))  {
+        /** change to user's home directory */
+        if (chdir(pwd->pw_dir) == -1) {
+          fprintf(stderr, "Error: Cannot change directory to home directory. %s.\n", strerror(errno));
+        }
+      } else {
+        /** try to open directory specified */
+        char *directory = &user_input[3];
+        /** change new line character to null terminator */
+        int index = strcspn(directory,"\n"); // find position of new line
+        if (index != strlen(directory)) {
+          directory[index] = '\0'; // change newline to null terminator
+        }
+        /** Error handling */
+        if (chdir(directory) == -1) {
+          fprintf(stderr, "Error: Cannot change directory to '%s'. %s.\n", directory, strerror(errno));
+        }
+      }
+    }
+
+    /** EXTRA CREDIT **
+        COLORIZED LS 
+        lists all files in given directory
+        colorizes directories in green, all other files in default
+    */
+    else if (user_input[0] == 'l' && user_input[1] == 's' && user_input[2] != ' ' && (user_input[2] == '\0' || user_input[2] == '\n') && (interrupted != true)) {
+      /** try to open directory specified */
+      char *directory = &user_input[3];
+      /** change new line character to null terminator */
+      int index = strcspn(directory,"\n"); // find position of new line
+      if (index != strlen(directory)) {
+        directory[index] = '\0'; // change newline to null terminator
+      }
+      char *directory_path; // directory path
+      /* No directory path, use current directory */
+      if (user_input[2] == '\n' || user_input[2] == '\0') {
+        directory_path = ".";
+      } 
+      /* Directory path provided */
+      else if (user_input[2] == ' ' && (user_input[3] != '\0' || user_input[3] != '\n')) {
+        invalid_args = 0;
+        for (int i=3; i<strlen(user_input); i++) {
+          if(user_input[i]==' ') {
+            /** Check for too many arguments */
+            fprintf(stderr, "Error: Too many arguments to ls.\n");
+            invalid_args = 1;
+            break;
+          }
+        }
+        /* skip if too many arguments */
+        if (invalid_args == 1) {
+          free(user_input);
+          free(cwd);
+          continue; // skip iteration
+        }
+        /** directory specified */
+        directory_path = directory;
+      }
+      /* Open direcotry */
+      DIR *dp = opendir(directory_path);
+      /* stat struct to get info about file */
+      struct stat file_stat;
+      if (dp == NULL) {
+        /* Error handling */
+        if (errno == ENOENT) {
+          fprintf(stderr, "Error: Directory doesn't exist.\n");
+          closedir(dp);
+          free(user_input);
+          free(cwd);
+          continue;
+        } else {
+          fprintf(stderr, "Error: %s.\n", strerror(errno));
+          closedir(dp);
+          free(user_input);
+          free(cwd);
+          continue;
+        }
+      }
+      /* struct dirent */
+      struct dirent *dirp;
+      while ((dirp = readdir(dp)) != NULL) {
+        /* Check if parent directory or current working directory */
+        if (strcmp(dirp->d_name, ".") == 0 || strcmp(dirp->d_name, "..") == 0) {
+          /* Skip */
+          continue;
+        }
+        /* check if directory or file */
+        char file_path[4096];
+        /* Concatenates directory and name of file/directory in given directory */
+        snprintf(file_path, sizeof(file_path), "%s/%s", directory_path, dirp->d_name);
+        /* Check if you can stat file */
+        if (stat(file_path, &file_stat) == -1) {
+          fprintf(stderr, "Error: %s.\n", strerror(errno));
+          continue;
+        }
+
+        /* Output directories in green */
+        if (S_ISDIR(file_stat.st_mode)) {
+          printf("%s%s%s\n", GREEN, dirp->d_name, DEFAULT);
+        } else {
+        /* Output files in default */
+          printf("%s\n", dirp->d_name);
+        }
+        //printf("%s%s%s\n", GREEN, dirp->d_name, DEFAULT);
+      }
+
+    closedir(dp);
+    }
+
+    /** EXTRA CREDIT
+        find <directory> <filename>
+        lists path of file found in specified directory, 
+        if no path is printed then file does not exist and was not found. 
+    */
+    else if (user_input[0] == 'f' && user_input[1] == 'i' && user_input[2] == 'n' && user_input[3] == 'd' && user_input[4] == ' ' && (user_input[5] != '\n' || user_input[6] != '\0') && interrupted != true) {
+      // change new line character to null terminator 
+      char *argument = user_input;
+      int index = strcspn(argument,"\n"); // find position of new line
+      if (index != strlen(argument)) {
+          argument[index] = '\0'; // change newline to null terminator
+      }
+      // arguments for exec() 
+      char *argv[4096] = { NULL }; // store arguments
+      int argc = 0;
+      char *token = strtok(argument, " "); // first argument
+      while (token != NULL && argc <= strlen(argument)) {
+          argv[argc++] = token;
+          token = strtok(NULL, " "); // next argument
+      }
+      argv[argc] = NULL; // end list with null pointer
+      navigate(argv[1], argv[2]);
+    }
+    
+
+    /** EXIT
+    cause shell to terminate and return EXIT_SUCCESS */
+    else if (user_input[0] == 'e' && user_input[1] == 'x' && user_input[2] == 'i' && user_input[3] == 't' && user_input[4] == '\n' && interrupted != true) {
+      /** cause shell to terminate and return EXIT_SUCCESS */
+      free(user_input);
+      free(cwd);
+      return (EXIT_SUCCESS);
+    
+    /** EXEC()
+      other commands using exec()
+      if unkown command is entered program forks
+      else if child program will exec() given command
+      else parent process will wait for child process to finish
+    */
+    } else {
+        /** change new line character to null terminator */
+        char *argument = user_input;
+        int index = strcspn(argument,"\n"); // find position of new line
+        if (index != strlen(argument)) {
+            argument[index] = '\0'; // change newline to null terminator
+        }
+        /* arguments for exec() */
+        char *argv[4096] = { NULL }; // store arguments
+        int argc = 0;
+        char *token = strtok(argument, " "); // first argument
+        while (token != NULL && argc <= strlen(argument)) {
+            argv[argc++] = token;
+            token = strtok(NULL, " "); // next argument
+        }
+        argv[argc] = NULL; // end list with null pointer
+
+        int status;
+        pid_t pid = fork(); // create child process
+        /* unknown command is entered program forks */
+        if (pid == -1) {
+            fprintf(stderr, "Error: fork() failed. %s.\n", strerror(errno));
+        }
+        /* child program will exec() given command */
+        else if (pid == 0) { // child process
+            if ((execvp(argv[0], argv)) == -1) {
+                fprintf(stderr, "Error: exec() failed. %s.\n", strerror(errno));
+            }
+            exit(EXIT_SUCCESS);
+        /* parent process will wait for child process to finish */
+        } else { // parent process
+            if (wait(&status) == -1 && interrupted == false) { 
+                fprintf(stderr, "Error: wait() failed. %s.\n", strerror(errno));
+            }
+        }
+    }
+    /* must free */
+    free(cwd);
+    free(user_input);
+    fflush(stdin);
+  }
+  return 0;
+}
