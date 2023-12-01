@@ -11,9 +11,6 @@ A Chrome extension for translating pages to bionic reading, which can be very be
 - Configurable font & font size;
 - Automated tests.
 
-## Example screenshot
-
-
 
 ## Font
 It overrides the font of the webpage as many (many) fonts don't work with Bionic Reading. This is mainly because of the size of bold and thin letters, and it seems having mono-spaced sans fonts improves neurodiverse reading capabilities anyway.
@@ -27,6 +24,14 @@ The font is configurable, you can choose one of these fonts:
 - Sans Serif
 - Source Sans Pro
 - Times New Roman
+
+
+## Font Size
+Use a slider to change the size of the text to be easier to read.
+
+
+## Boldness
+Dynamically change the boldness of bionic reading to best suite your needs.
 
 ## How to install
 
