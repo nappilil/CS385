@@ -86,7 +86,7 @@ weightSlider.addEventListener('input', updateSliderColors);
 function convertPageToBionic() {
   const font_settings = {
     "Arial":            { "weight_default": 100}, 
-    "Comic Sans":       { "weight_default": 100}, 
+    "Comic Sans MS":    { "weight_default": 100}, 
     "Noto Sans":        { "weight_default": 100}, 
     "Open Sans":        { "weight_default": 100},  
     "Roboto":           { "weight_default": 100},  
