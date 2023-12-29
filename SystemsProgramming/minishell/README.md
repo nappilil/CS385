@@ -22,9 +22,9 @@ The program captures the `SIGINT` signal and returns the user to the prompt.
 
 ## Usage
 
-To compile and run the MiniShell, use the following commands:
+To compile and run the MiniShell, use the following command:
 
 ```bash
-gcc mini_shell.c -o mini_shell
+make
 ./mini_shell
 
