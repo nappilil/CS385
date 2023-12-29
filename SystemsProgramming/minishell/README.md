@@ -8,8 +8,13 @@ The main loop of this program will print the current working directory in blue, 
 
 ## Commands
 
-- `cd`: Manually implemented change directory command.
-- `exit`: Manually implemented exit command.
+- `cd`: implemented change directory command.
+- `exit`: implemented exit command.
+- `ls`: implemented list command, displays files and directories in green.
+- `find`: implemented find command.
+        - find <directory> <filename>
+        - lists path of file found in specified directory, 
+        - if no path is printed then file does not exist and was not found. 
 - All other commands are executed using the `exec()` function.
 
 ## Error Handling
