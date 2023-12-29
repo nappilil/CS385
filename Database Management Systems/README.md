@@ -106,4 +106,37 @@ The VehicleOffice database consists of four tables:
 | 44444444   | 40        | 2017-09-01  | L         | 82         |
 | 11111111   | 20        | 2017-12-02  | L         | 67         |
 | 22222222   | 40        | 2016-08-29  | D         | 81         |
-|
+| 33333333   | 20        | 2017-06-27  | L         | 49         |
+| 44444444   | 10        | 2019-04-10  | D         | 80         |
+| 77777777   | 30        | 2020-12-31  | L         | 90         |
+| 77777777   | 30        | 2020-10-30  | L         | 40         |
+| 66666666   | 40        | 2020-02-03  | D         | 90         |
+
+## Tasks
+Task 1:  Create the schema of the remaining three tables (driver, license, and exam tables).
+
+Task 2: Insert the records into all the four tables.
+
+Task 3 Design a simple GUI interface that allows the users to choose from the following options:
+* Option 1: Query the license information of specific drivers.
+   * The GUI accepts a driver’s name from the console as the input. It outputs the license type, license issue date, license expiry date, and the name of the issued branch of the inquired driver.
+
+* Option 2: Query the exam information of specific drivers.
+   * The GUI accepts a driver’s name from the console as the input.  It outputs the exam records, including the branch name, exam date, and exam score of the inquired driver.    
+
+* Option 3: Search the driver information for specific branches.
+   * The GUI accepts a branch name from the console as the input.  It outputs the information of all the drivers whose licenses were issued from the inquired branch, including the name, address, city, phone number, and license type of these drivers.     
+   
+* Option 4: Search the branch information.
+   * The GUI accepts a city name from the console as the input.  It outputs the information of all the branches in the inquired city, including the branch name, address, phone number, and the total number of licenses issued by this branch.  For those branches that do not issue any license, output 0 as the total number of licenses.       
+
+* Option 5: Report the drivers with expired licenses.
+   * Return the names of the drivers and their phone numbers whose licenses have expired for at least three months by Nov 2, 2023.  
+
+* Option 6: Report data errors in the Exam table:
+   * The Exam table has some data errors. Find the following five types of errors. Indicate which type of errors that your output belongs to.       
+      * Type I error – Unmatching branch IDs:  Return the names of the drivers whose branch ID of his/her licence does not match the branch ID of any of his/her exams.
+      * Type II error – Unmatching issue date:  Return the names of the drivers whose issue date of any of his/her licenses is before the date of the latest exam that he/she has taken.  You do not need to consider the matching between the exam type and licence type.
+      * Type III error – Unmatching license type:  Return the names of the drivers whose license type in the License table does not match the exam type of his/her latest exam.
+      * Type IV error – Invalid exam score: Return the names of the drivers who did not pass the exam (score > 70) but were issued a license. For those drivers who took multiple exams, consider the highest score for the comparison.  You do not need to consider the matching between the exam type and licence type.
+      * Type V error – No exam: Return the names of the drivers who did not take any exam but were issued a license.  
