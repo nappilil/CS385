@@ -10,9 +10,6 @@
    - [License Table](#license-table)
    - [Exam Table](#exam-table)
 4. [Tasks](#tasks)
-   - [Creating Schema](#creating-schema)
-   - [Data Input](#data-input)
-   - [Query Design](#query-design)
 
 ---
 
