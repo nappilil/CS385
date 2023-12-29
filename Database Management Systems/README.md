@@ -18,7 +18,7 @@
 
 ## Introduction
 
-Welcome to the README for the VehicleOffice database. This document provides an overview of the database, including its schema, instances of the tables, and tasks to be performed.
+This document provides an overview of the vehicle database, including its schema, instances of the tables, and tasks to be performed.
 
 ## Schema
 
