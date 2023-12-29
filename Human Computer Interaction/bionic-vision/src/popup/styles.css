@@ -1,0 +1,193 @@
+button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(135, 145, 253) 0,
+    rgb(96, 35, 251) 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(32, 13, 71, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Helvetica, Inter, -apple-system, BlinkMacSystemFont, "Roboto",
+    sans-serif;
+  /* height: 48px; */
+  height: 36px;
+  /* width: 100%; */
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+}
+
+
+#helpPopup {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: Helvetica, Inter, -apple-system, BlinkMacSystemFont, "Roboto",
+  sans-serif;
+  text-align: left;
+}
+
+#helpPopup ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0;
+}
+
+#helpPopup li {
+  margin-bottom: 10px; /* Add space between list items */
+}
+
+/* Style the popup box */
+.popup {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eef4fb;
+  border: 2px dotted rgb(123, 30, 244);
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+  padding: 2px;
+  z-index: 9999;
+}
+
+/* Style the link inside the popup */
+.popup a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+/* Change link color on hover */
+.popup a:hover {
+  color: #2c3e50;
+}
+
+body {
+  margin: 0px;
+  font-family: Helvetica, Inter, -apple-system, BlinkMacSystemFont, "Roboto",
+    sans-serif;
+  background-color: #eef4fb;
+  color: #fff;
+  margin-bottom: 10px;
+  border: 2px;
+  border-radius: 6px;
+  border-style: dotted;
+  border-color: rgb(87, 29, 162);
+  /* padding: 5px; */
+  margin: 8px;
+}
+
+#slider {
+  width: 80%;
+  margin-top: 10px;
+}
+
+#sliderValue {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+  color: #000000;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-color: #87ceeb;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+button.current {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+
+.button-enabled {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(135, 145, 253) 0,
+    rgb(96, 35, 251) 100%
+  );
+}
+
+.button-disabled {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #fc5aff 0,
+    #ff5461 100%
+  );
+}
+
+.label {
+  margin: 5px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.desc {
+  text-align: center;
+  margin: 5px;
+}
+
+.small-group {
+  text-align: center;
+  padding: 2px;
+}
+
+input {
+  width: 90%;
+}
+
+.header {
+  padding: 5px;
+  text-align: center;
+  background: #eef4fb;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    /* #2c3e50 0,
+    #000000 100%  */ #8c8c8c 0,
+    #000000 100%
+  );
+  color: white;
+}
+
+.header {
+  background: #eef4fb;
+}
+
+.header_logo {
+  font-family: Just Sans, Open Sans, Segoe UI, Helvetica Neue, Ubuntu, sans-serif;
+  width: 12rem;
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: rgb(87, 29, 162);
+  font-style: bold;
+}
+
+
+
