@@ -1,0 +1,232 @@
+button {
+  align-items: center;
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(32, 13, 71, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(135, 145, 253) 0,
+    rgb(96, 35, 251) 100%
+  );
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Poppins', sans-serif;
+  /* height: 48px; */
+  height: 36px;
+  /* width: 100%; */
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.15s;
+  display: block;
+  margin-bottom: 10px
+}
+
+body {
+  margin: 0px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #eef4fb;
+  color: #000000;
+  margin-bottom: 10px;
+  border: 2px;
+  border-radius: 6px;
+  /* padding: 5px; */
+  margin: 8px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 12px;
+}
+
+li::before {
+  content: '\2022'; /* Unicode character for a bullet point */
+  color: rgb(96, 35, 251);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(96, 35, 251) 0%,
+    rgb(135, 145, 253) 100%
+  );
+}
+
+
+
+button:active {
+  transform: translateY(2px);
+}
+
+.button-enabled:hover {
+  transform: translateY(-2px);
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(96, 35, 251) 0%,
+    rgb(135, 145, 253) 100%
+  );
+}
+
+.button-disabled:hover {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #ff5461 0%,
+    #fc5aff 100%
+  );
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
+
+.button-enabled {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    rgb(135, 145, 253) 0%,
+    rgb(96, 35, 251) 100%
+  );
+}
+
+.button-disabled {
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #fc5aff 0%,
+    #ff5461 100%
+  );
+}
+
+.label {
+  margin: 5px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.small-group {
+  text-align: center;
+  padding: 2px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  padding: 5px;
+  text-align: center;
+  background: #eef4fb;
+  color: white;
+}
+
+.header {
+  background: #eef4fb;
+}
+
+.name {
+  font-family: Just Sans, Open Sans, Segoe UI, Helvetica Neue, Ubuntu, sans-serif;
+  width: 12rem;
+  font-size: 24px;
+  color: rgb(87, 29, 162);
+  font-style: bold;
+  font-weight: 900;
+}
+
+
+/* Reset default styles for the select */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  width: 150px; /* Reduce the width */
+  padding: 8px; /* Reduce the padding */
+  font-family: Arial;
+  font-size: 14px; /* Reduce the font size */
+  border: 1px solid rgb(87, 29, 162);
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#highlight-input option:nth-child(1) {
+  font-weight: 400;
+}
+
+#highlight-input option:nth-child(2) {
+  font-weight: 600;
+}
+
+#highlight-input option:nth-child(3) {
+  font-weight: 900;
+}
+
+#rest-input option:nth-child(1) {
+  color: rgba(0, 0, 0, 1)
+}
+
+#rest-input option:nth-child(2) {
+  color: rgba(0, 0, 0, 0.9)
+}
+
+#rest-input option:nth-child(3) {
+  color: rgba(0, 0, 0, 0.8)
+}
+
+#rest-input option:nth-child(4) {
+  color: rgba(0, 0, 0, 0.7)
+}
+
+#rest-input option:nth-child(5) {
+  color: rgba(0, 0, 0, 0.6)
+}
+
+#rest-input option:nth-child(6) {
+  color: rgba(0, 0, 0, 0.5)
+}
+
+#rest-input option:nth-child(7) {
+  color: rgba(0, 0, 0, 0.4)
+}
+
+
+/* Style the dropdown list */
+.select-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  display: none;
+  margin-top: 3px; /* Adjust margin for better spacing */
+  border: 1px solid rgb(87, 29, 162);
+}
+
+option:hover {
+  background-color: yellow;
+}
+
