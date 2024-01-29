@@ -11,7 +11,7 @@ To use the Connect Four game, follow these steps:
 1. Import the `Board` class from the script.
 
     ```python
-    from connect_four import Board
+    from connect_four import *
     ```
 
 2. Create an instance of the `Board` class.
