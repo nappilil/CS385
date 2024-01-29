@@ -36,7 +36,7 @@ make
 
 ## Outputs
 The Output of the first file should look like this:
-```
+```bash
 [/home/shudonghao/hw5/sol]> cd
 [/home/shudonghao]> cd /tmp
 [/tmp]> cd ..
