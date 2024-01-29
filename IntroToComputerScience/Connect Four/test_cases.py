@@ -1,4 +1,4 @@
-from hw13 import *
+from ConnectFour import *
 
 sequences = {
     'v_X': '0101010',
