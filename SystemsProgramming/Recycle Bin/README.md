@@ -5,6 +5,16 @@
 This Bash script, named `junk.sh`, provides basic functionality for a recycle bin on a Linux system. It acts as a substitute for the `rm` command, allowing users to move files into a recycle bin directory (`~/.junk`), list the files in the recycle bin, and purge the recycle bin by permanently deleting its contents.
 
 ## Usage
+When the script is executed, it first parses the command line arguments. The usage message
+is shown below to help you determine what features you need to implement.
+1 $ ./junk.sh
+2 Usage: junk.sh [-hlp] [list of files]
+3 -h: Display help.
+4 -l: List junked files.
+5 -p: Purge all files.
+6 [list of files] with no other arguments to junk those files.
+
+
 
 Sample Run Time Scenario
 1 $ pwd
