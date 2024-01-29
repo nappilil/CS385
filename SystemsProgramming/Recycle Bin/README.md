@@ -1,4 +1,4 @@
-# Junk.sh - Simple Bash Script for Recycle Bin Functionality
+Simple Bash Script for Recycle Bin Functionality
 
 ## Overview
 
