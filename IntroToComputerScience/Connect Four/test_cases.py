@@ -1,4 +1,4 @@
-from ConnectFour import *
+from Connect4 import *
 
 sequences = {
     'v_X': '0101010',
