@@ -7,16 +7,18 @@ This Bash script, named `junk.sh`, provides basic functionality for a recycle bi
 ## Usage
 When the script is executed, it first parses the command line arguments. The usage message
 is shown below to help you determine what features you need to implement.
+```plaintext
 1 $ ./junk.sh
 2 Usage: junk.sh [-hlp] [list of files]
 3 -h: Display help.
 4 -l: List junked files.
 5 -p: Purge all files.
 6 [list of files] with no other arguments to junk those files.
+```
 
 
-
-Sample Run Time Scenario
+## Sample Run Time Scenario
+```plaintext
 1 $ pwd
 2 /home/user/test
 3 $ touch junk0.txt
