@@ -1,0 +1,17 @@
+{
+  "name": "cs-546-lab-4",
+  "version": "1.0.0",
+  "description": "My lab 4 module",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Lilli Nappi 260006502",
+  "license": "MIT",
+  "dependencies": {
+    "is-url": "^1.2.4",
+    "mongodb": "^6.3.0",
+    "valid-url": "^1.0.9"
+  }
+}

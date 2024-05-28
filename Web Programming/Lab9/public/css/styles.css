@@ -1,0 +1,86 @@
+/*
+You will style your page using at least 5 CSS selectors for general CSS styling. You will place the CSS in its own file. 
+*/
+.hidden {
+    display: none;
+}
+
+body {
+    background: #fefefe;
+    font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    text-align: center;
+  }
+  
+main {
+    max-width: 75%;
+    margin: auto;
+  }
+  
+h1 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+  
+  
+p {
+    font-size: 1rem;
+    line-height: 2;
+}
+  
+#myForm {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
+
+}
+
+#text_to_analyze {
+    background-color: rgb(245, 242, 242);
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    height: 4em;
+    width: 25em;
+}
+
+button {
+    background-color: rgb(25, 73, 205);
+    margin-top: 10px;
+    color: white;
+    margin-left: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(18, 43, 112);
+}
+
+
+dt {
+    background-color: lightgrey;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+  
+dd, dt {
+    text-align: center;
+    line-height: 1.5;
+    margin-right: auto;
+    margin-left: auto;
+    width: 25%;
+}
+  
+#error_output {
+    padding: 30px;
+    color: red;
+    font-weight: bold;
+}

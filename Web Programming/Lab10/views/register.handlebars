@@ -1,0 +1,60 @@
+{{!--
+
+registration handelbars
+
+--}}
+{{!--
+
+login form handlebar template
+
+--}}
+<div class="form">
+<p>Please Enter Details Here:</p>
+<form action="/register" method="POST" class="signup-form" id="signup-form">
+  <label for="firstName">
+    <input type="text" name="firstName" placeholder="First Name" value="{{user.firstName}}" id="firstName">
+  </label>
+  <label for="lastName">
+    <input type="text" name="lastName" placeholder="Last Name" value="{{user.lastName}}" id="lastName">
+  </label>
+  <label for="username">
+    <input type="text" name="username" placeholder="Username" value="{{user.username}}" id="username">
+  </label>
+  <label for="password">
+    <input type="password" name="password" placeholder="Password" value="{{user.password}}" id="password">
+  </label>
+  <label for="confirmPassword">
+    <input type="password" name="confirmPassword" placeholder="Confirm Password" value="{{user.confirmPassword}}" id="confirmPassword">
+  </label>
+  <label for="favoriteQuote">
+    <input type="text" name="favoriteQuote" placeholder="Favorite Quote" value="{{user.favoriteQuote}}" id="favoriteQuote">
+  </label>
+  <br>
+  <label for="themePreference">
+    <select name="themePreference" id="themePreference">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+  </label>
+  <label for="role">
+    <select name="role" id="role">
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+    </select>
+  </label>
+  <br>
+  <button type="submit" name="submitButton" id="submitButton">Submit</button>
+</form>
+{{#if hasErrors}}
+  <ul class="error-list">
+    {{#each errors}}
+    <li>
+      {{this}}
+    </li>
+    {{/each}}
+  </ul>
+{{/if}}
+<div id="error_output">
+</div>
+<a href="/login">Already have an account? Click here to log-in</a>
+</div>

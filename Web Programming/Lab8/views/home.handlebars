@@ -1,0 +1,14 @@
+<p>Welcome To the Movie Finder Website. Here you will be able to search for any movie you like! You may do this by entering some keywords of the movie title you'd like to find.</p>
+<article class="form">
+<h1>Movie Finder</h1>
+<form action="/searchmovies" method="POST" class="search-form">
+  <label for="searchMoviesByName">
+    <input type="text" name="searchMoviesByName" placeholder="Movie Title" value="{{movie.title}}" id="searchMoviesByName">
+  </label>
+  <input type="submit" id="submit-button">
+  <input type="reset" id="reset-button">
+</form>
+{{#if hasErrors}}
+<p class="error"> {{errors}} </p>
+{{/if}}
+</article>

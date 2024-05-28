@@ -1,0 +1,50 @@
+<article class="post">
+  <h1>{{ movie.Title }}</h1>
+  <img alt="{{movie.Title}} Poster" src="{{ movie.Poster }}" id="movieByIDimage">
+  
+  <h2>Plot</h2>
+  <p>{{ movie.Plot }}</p>
+  <section>
+    <h3>Info</h3>
+    <dl>
+      <dt>Year Released:</dt>
+        <dd>{{ movie.Year }}</dd>
+      <dt>Rated:</dt>
+        <dd>{{ movie.Rated }}</dd>
+      <dt>Runtime:</dt>
+        <dd>{{ movie.Runtime }}</dd>
+      <dt>Genre(s):</dt>
+        <dd>{{ movie.Genre }}</dd>
+      <dt>Box Office Earnings:</dt>
+        <dd>{{ movie.BoxOffice }}</dd>
+      <dt>DVD Release Date</dt>
+        <dd>{{movie.DVD}}</dd>
+    </dl>
+  </section>
+  
+  <section>
+    <h4>Cast and Crew</h4>
+    <p><strong>Director:</strong> {{movie.Director}}</p>
+    <p><strong>Writer:</strong> {{movie.Writer}}</p>
+    <p><strong>Cast:</strong> {{movie.Actors}}</p>
+  </section>
+  
+  <section>
+ {{#if movie.Ratings.length}}
+  <h4>Ratings</h4>
+    <table class="my_coolratings_table">
+    {{#each movie.Ratings}}
+      <tr>
+        <th>Source</th>
+        <th>Rating</th>
+     </tr>
+     <tr>
+       <td>{{Source}}</td>
+       <td>{{Value}}</td>
+    </tr>
+    {{/each}}
+  </table>
+  {{/if}}
+  </section>
+<a href="/" class="back-button">Search for Another Movie</a>
+</article>

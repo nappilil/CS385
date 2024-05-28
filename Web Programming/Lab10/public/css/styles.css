@@ -1,0 +1,183 @@
+/* You will create a CSS stylesheet in /public/css/styles.css; this file should have at least 5 rulesets.  You will need to utilize all 5 rulesets on each of the pages (not every page has to use all 5 rulesets each but all 5 rulesets must be utilized by the various pages in your application).  So you can have some rulesets for one page, some for another page but there needs to be at least 5 total rulesets that are used between all the pages. There are two specific rulesets you need to create in addition to the 5 other rulesets:  .light and .dark.  Depending of the user's theme preferences stored in the session, your pages will be displayed using the user's theme preferences. If their theme preference is "light" then the background color of the page should be white and the text color of the page should be black.  If their theme preference is "dark" then the background color of the page should be black and the text color should be white.  HINT: You can just set the body element's class to either dark or light depending on their themePreference stored in the session. obviously, the theme preference only is active after a user is logged in.  */
+
+/* two rulesets you MUST implement in addition to the other 5: */
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}
+
+/*
+You will style your page using at least 5 CSS selectors for general CSS styling. You will place the CSS in its own file. 
+*/
+
+/* This is my 5 rulesets that are on every page (as it is on main which is on every page also) */
+body {
+    background: #fefefe;
+    font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    text-align: center;
+}
+
+header {
+    max-width: 75%;
+    margin: auto;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+footer {
+    max-width: 75%;
+    margin: auto;
+    padding-top: 30px;
+}
+
+main {
+    max-width: 75%;
+    margin: auto;
+}
+
+/*
+Ends here. The rest is extra stuff to make it look a bit better
+*/
+p {
+    font-size: 1rem;
+    line-height: 2;
+}
+
+#form {
+    max-width: 75%;
+    margin: auto;
+}
+
+.signin-form {
+    max-width: 50%;
+    margin: auto;
+    background-color: rgb(241, 241, 241);
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+}
+
+.signup-form {
+    max-width: 50%;
+    margin: auto;
+    background-color: rgb(241, 241, 241);
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+}
+
+
+#firstName {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#lastName {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#username {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#password {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#confirmPassword {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#favoriteQuote {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#themePreference {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#role {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+button {
+    background-color: rgb(25, 73, 205);
+    margin-top: 10px;
+    color: white;
+    margin-left: 15px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(18, 43, 112);
+}
+
+ul {
+    list-style: none;
+    padding: 30px;
+    color: red;
+    font-weight: bold;
+    text-align: left;
+}
+
+a,
+a:link {
+    color: #228b22;
+}
+
+a:visited {
+    font-style: italic;
+    color: saddlebrown;
+}
+
+a:hover {
+    font-style: normal;
+    font-weight: 700;
+}
+
+a:active {
+    color: #ff0000;
+}

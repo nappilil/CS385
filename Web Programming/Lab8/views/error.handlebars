@@ -1,0 +1,7 @@
+{{#if movieSearchError}}
+    <p class="not-found">We're sorry, but no results were found for {{searchMoviesByName}}.</p>
+{{/if}}
+{{#if movieIDError}}
+    <p class="invalid-id">We're sorry, but '{{imdbID}}' is an invalid imdbID</p>
+{{/if}}
+<a href="/" class="back-button">Search for Another Movie</a>

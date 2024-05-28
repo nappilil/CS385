@@ -1,0 +1,30 @@
+{{!--
+
+login form handlebar template
+
+--}}
+<div class="form">
+<p>Please Enter Details Here:</p>
+<form action="/login" method="POST" class="signin-form" id="signin-form">
+  <label for="username">
+    <input type="text" name="username" placeholder="Username" value="{{user.username}}" id="username">
+  </label>
+  <label for="password">
+    <input type="password" name="password" placeholder="Password" value="{{user.password}}" id="password">
+  </label>
+  <br>
+  <button type="submit" name="submitButton" id="submitButton">Submit</button>
+</form>
+{{#if hasErrors}}
+  <ul class="error-list">
+    {{#each errors}}
+    <li>
+      {{this}}
+    </li>
+    {{/each}}
+  </ul>
+{{/if}}
+<div id="error_output">
+</div>
+<a href="/register">Click here to register!</a>
+</div>
