@@ -1,4 +1,4 @@
-# HW2: Build a CNN for image recognition
+# HW1: Logistic Regression
 
 ### Author: Lilli Nappi
 
