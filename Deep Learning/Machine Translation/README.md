@@ -4,8 +4,3 @@
 
 ## Description
 This lab involes creating a Bidirectional LSTM model to translate english sentences to spanish. 
-
-### Usage
-Open the notebook in Jupyter:
-```sh
-jupyter notebook
