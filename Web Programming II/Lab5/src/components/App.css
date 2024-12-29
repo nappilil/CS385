@@ -1,0 +1,230 @@
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.navigation {
+	background-color:#4369e6;
+	height: 30px;
+	padding: 20px;
+	color: white;
+}
+
+.navigation a {
+    color: white;
+    padding: 15px 18px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navigation a:hover {
+	color: black;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.events {
+	display: grid;
+	gap: 50px 100px;
+	list-style-type: none;
+	grid-template-columns: 350px 300px 300px;
+	grid-template-rows: 300px 300px 300px; 
+}
+
+.tickets {
+	padding: 40px;
+	display: flex;
+	text-align: left;
+}
+
+.ticket-limit, .price-range {
+	padding: 25px;
+}
+
+.event {
+	list-style-type: none;
+}
+
+.event:hover .link:hover {
+	color: #4369e6;
+}
+
+.event:hover .image:hover {
+	filter: brightness(1.1);
+}
+
+.link {
+	text-decoration: none;
+	color: #272727;
+	padding: 10px;
+}
+
+.title {
+	font-size: 0.75rem;
+	align-items: center;
+}
+
+.time, .location, .genre {
+	font-size: 0.75rem;
+}
+
+.price {
+	font-size: 0.70rem;
+}
+
+.image {
+	width: 250px;
+	height: 150px;
+	border-radius: 8px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.event-page {
+	margin: 20px;
+	padding: 20px;
+}
+
+.event-head {
+	text-align: center;
+}
+
+.event-name {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.event-image {
+	width: 500px;
+	height: 300px;
+	border-radius: 8px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.seat-map {
+	width: 750px;
+	height: 550px;
+}
+
+.ticket-info {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.info {
+	text-align: left;
+}
+
+table {
+	margin-top: 5px;
+}
+
+th {
+	font-weight: bold;
+	color: white;
+	background-color: #4369e6;
+}
+
+td, th {
+	padding: 10px;
+}
+
+td {
+	padding: 20px;
+	text-align: left;
+}
+
+.table-head {
+	font-weight: bold;
+	color: white;
+	background-color: #4369e6;
+	padding: 15px;
+}
+
+.attraction-info {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.social-media {
+	display: flex;
+	padding: 15px;
+	text-align: center;
+	justify-content: center;
+}
+
+.social-media li {
+	list-style-type: none;
+	padding: 5px;
+}
+
+.social-media li:hover .link:hover {
+	color: #4369e6;
+}
+
+.social {
+	width: 100px;
+	height: 100px;
+	border-radius: 8px;
+}
+
+.social-media li:hover .social:hover {
+	color: #4369e6;
+	transform:scale(1.15)
+}
+
+.genre-info {
+	padding: 3px;
+}
+
+.button-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.next-button, .prev-button {
+	font-size: 18px;
+	border-radius: 5px;
+	color: white;
+	background-color: #4369e6;
+	border: none;
+	padding: 10px;
+	margin: 25px;
+}
+
+.next-button:hover, .prev-button:hover {
+	color: #4369e6;
+	background-color: white;
+}
+
+.next-button a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.prev-button a {
+	color: inherit;
+	text-decoration: none;
+}

@@ -1,0 +1,21 @@
+{
+    "name": "cs-554-lab-3",
+    "version": "1.0.0",
+    "description": "My lab 3 module",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js",
+        "seed": "node ./tasks/seed.js"
+    },
+    "author": "Lilli Nappi 20006502",
+    "license": "MIT",
+    "dependencies": {
+        "@apollo/server": "^4.11.0",
+        "flat": "^6.0.1",
+        "graphql": "^16.9.0",
+        "mongodb": "^6.9.0",
+        "redis": "^4.7.0",
+        "seed": "^0.4.4"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "cs-554-lab-2",
+    "version": "1.0.0",
+    "description": "My lab 2 module",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node app.js",
+        "seed": "node ./tasks/seed.js"
+    },
+    "author": "Lilli Nappi 20006502",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.7.7",
+        "express": "^4.21.0",
+        "flat": "^6.0.1",
+        "redis": "^4.7.0"
+    }
+}
